@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Chart } from "chart.js/auto";
 
-
 const LineChart = () => {
   const [age, setAge] = useState(6);
   const [weight, setWeight] = useState(7.5);
@@ -33,12 +32,22 @@ const LineChart = () => {
       },
       options: {
         responsive: true,
+        maintainAspectRatio: false,
         scales: {
           x: {
             display: true,
             title: {
               display: true,
               text: "Age (months)",
+              font: {
+                size: 14,
+                weight: "bold",
+              },
+            },
+            ticks: {
+              font: {
+                size: 12,
+              },
             },
           },
           y: {
@@ -46,6 +55,15 @@ const LineChart = () => {
             title: {
               display: true,
               text: "Weight and Length",
+              font: {
+                size: 14,
+                weight: "bold",
+              },
+            },
+            ticks: {
+              font: {
+                size: 12,
+              },
             },
           },
         },
@@ -58,14 +76,15 @@ const LineChart = () => {
   }, [age, weight, length]);
 
   return (
-    <div>
-      <canvas ref={chartRef}></canvas>
-      <div>
+    <div style={{ width: "400px", height: "300px", overflow: "hidden" }}>
+      <canvas ref={chartRef} style={{ width: "100%", height: "100%" }}></canvas>
+      <div style={{ marginTop: "10px" }}>
         <label>Age (months):</label>
         <input
           type="number"
           value={age}
           onChange={(e) => setAge(Number(e.target.value))}
+          style={{ marginLeft: "5px" }}
         />
       </div>
       <div>
@@ -74,6 +93,7 @@ const LineChart = () => {
           type="number"
           value={weight}
           onChange={(e) => setWeight(Number(e.target.value))}
+          style={{ marginLeft: "38px" }}
         />
       </div>
       <div>
@@ -82,6 +102,7 @@ const LineChart = () => {
           type="number"
           value={length}
           onChange={(e) => setLength(Number(e.target.value))}
+          style={{ marginLeft: "47px" }}
         />
       </div>
     </div>
