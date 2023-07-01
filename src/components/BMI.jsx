@@ -138,7 +138,7 @@ const BMI = () => {
           ))}
          
         </div>
-        <div>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Temporibus, similique veniam. Atque possimus inventore et asperiores exercitationem aperiam ipsam, commodi assumenda, animi vitae voluptatem, nisi libero a. Temporibus, atque vel.</div>
+         <div>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Temporibus, similique veniam. Atque possimus inventore et asperiores exercitationem aperiam ipsam, commodi assumenda, animi vitae voluptatem, nisi libero a. Temporibus, atque vel.</div>
       </form>
     </div>
   );
