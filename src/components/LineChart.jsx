@@ -1,15 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { Chart } from "chart.js/auto";
 
 const LineChart = () => {
   const [age, setAge] = useState(6);
   const [weight, setWeight] = useState(7.5);
   const [length, setLength] = useState(70);
-  const chartRef = React.createRef();
+
+  const weightChartRef = useRef();
+  const lengthChartRef = useRef();
 
   useEffect(() => {
-    const ctx = chartRef.current.getContext("2d");
-    const chart = new Chart(ctx, {
+    const weightChartCtx = weightChartRef.current.getContext("2d");
+    const lengthChartCtx = lengthChartRef.current.getContext("2d");
+
+    const weightChart = new Chart(weightChartCtx, {
       type: "line",
       data: {
         labels: [age],
@@ -21,6 +25,53 @@ const LineChart = () => {
             backgroundColor: "rgba(255, 99, 132, 0.2)",
             fill: false,
           },
+        ],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          x: {
+            display: true,
+            title: {
+              display: true,
+              text: "Age (months)",
+              font: {
+                size: 14,
+                weight: "bold",
+              },
+            },
+            ticks: {
+              font: {
+                size: 12,
+              },
+            },
+          },
+          y: {
+            display: true,
+            title: {
+              display: true,
+              text: "Weight",
+              font: {
+                size: 14,
+                weight: "bold",
+              },
+            },
+            ticks: {
+              font: {
+                size: 12,
+              },
+            },
+          },
+        },
+      },
+    });
+
+    const lengthChart = new Chart(lengthChartCtx, {
+      type: "line",
+      data: {
+        labels: [age],
+        datasets: [
           {
             label: "Length",
             data: [length],
@@ -54,7 +105,7 @@ const LineChart = () => {
             display: true,
             title: {
               display: true,
-              text: "Weight and Length",
+              text: "Length",
               font: {
                 size: 14,
                 weight: "bold",
@@ -71,39 +122,54 @@ const LineChart = () => {
     });
 
     return () => {
-      chart.destroy();
+      weightChart.destroy();
+      lengthChart.destroy();
     };
   }, [age, weight, length]);
 
   return (
-    <div style={{ width: "400px", height: "300px", overflow: "hidden" }}>
-      <canvas ref={chartRef} style={{ width: "100%", height: "100%" }}></canvas>
-      <div style={{ marginTop: "10px" }}>
-        <label>Age (months):</label>
-        <input
-          type="number"
-          value={age}
-          onChange={(e) => setAge(Number(e.target.value))}
-          style={{ marginLeft: "5px" }}
-        />
+    <div style={{ display: "flex", height: "400px" }}>
+      <div style={{ width: "45%", marginRight: "5%" }}>
+        <canvas ref={weightChartRef} style={{ width: "100%", height: "100%" }}></canvas>
+        <div style={{ marginTop: "10px" }}>
+          <label>Age (months):</label>
+          <input
+            type="number"
+            value={age}
+            onChange={(e) => setAge(Number(e.target.value))}
+            style={{ marginLeft: "5px" }}
+          />
+        </div>
+        <div>
+          <label>Weight:</label>
+          <input
+            type="number"
+            value={weight}
+            onChange={(e) => setWeight(Number(e.target.value))}
+            style={{ marginLeft: "38px" }}
+          />
+        </div>
       </div>
-      <div>
-        <label>Weight:</label>
-        <input
-          type="number"
-          value={weight}
-          onChange={(e) => setWeight(Number(e.target.value))}
-          style={{ marginLeft: "38px" }}
-        />
-      </div>
-      <div>
-        <label>Length:</label>
-        <input
-          type="number"
-          value={length}
-          onChange={(e) => setLength(Number(e.target.value))}
-          style={{ marginLeft: "47px" }}
-        />
+      <div style={{ width: "45%" }}>
+        <canvas ref={lengthChartRef} style={{ width: "100%", height: "100%" }}></canvas>
+        <div style={{ marginTop: "10px" }}>
+          <label>Age (months):</label>
+          <input
+            type="number"
+            value={age}
+            onChange={(e) => setAge(Number(e.target.value))}
+            style={{ marginLeft: "5px" }}
+          />
+        </div>
+        <div>
+          <label>Length:</label>
+          <input
+            type="number"
+            value={length}
+            onChange={(e) => setLength(Number(e.target.value))}
+            style={{ marginLeft: "47px" }}
+          />
+        </div>
       </div>
     </div>
   );
