@@ -1,0 +1,107 @@
+/* CSS */
+.container{
+  background: linear-gradient(135deg, rgba(255, 194, 217, 0.8), rgba(253, 250, 240, 0.8)), url("https://example.com/path/to/your-background-image.jpg");
+  background-blur: 10px;
+  background-size: cover;
+}
+.button-35 {
+  align-items: center;
+  background-color: #fff;
+  box-shadow: transparent 0 0 0 3px, rgba(18, 18, 18, 0.1) 0 6px 20px;
+  box-sizing: border-box;
+  color: #121212;
+  cursor: pointer;
+  display: inline-flex;
+  flex: 1 1 auto;
+  font-family: Inter, sans-serif;
+  font-weight: 700;
+  justify-content: center;
+  line-height: 1;
+  margin: 0;
+  outline: none;
+  padding: 1rem;
+  text-align: center;
+  text-decoration: none;
+  transition: box-shadow 0.2s, -webkit-box-shadow 0.2s;
+  white-space: nowrap;
+  border: 0;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-35:hover {
+  box-shadow: #ffffff 0 0 0 3px, transparent 0 0 0 0;
+}
+
+@font-face {
+  font-family: google sans;
+  src: url("https://fonts.googleapis.com/css?family=Open+Sans");
+}
+
+button {
+  font-family: google sans;
+}
+
+.google-btn {
+  width: 184px;
+  height: 42px;
+  background-color: rgb(53, 53, 175);
+  border-radius: 2px;
+  box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.25);
+}
+
+.google-btn .google-icon-wrapper {
+  position: absolute;
+  margin-top: 1px;
+  margin-left: 1px;
+  width: 40px;
+  height: 40px;
+  border-radius: 2px;
+  background-color: white;
+}
+
+.google-btn .google-icon {
+  position: absolute;
+  margin-top: 11px;
+  margin-left: 11px;
+  width: 18px;
+  height: 18px;
+}
+
+.google-btn .btn-text {
+  float: right;
+  margin: 11px 11px 0 0;
+  color: white;
+  font-size: 14px;
+  letter-spacing: 0.2px;
+  font-family: "Roboto", sans-serif;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  background-color: black;
+  text-align: center;
+  height: 100vh;
+  flex-direction: column;
+}
+
+.input {
+  display: block;
+  margin: 0.5rem auto;
+  padding: 0.5rem;
+}
+
+.button-container {
+  padding-top: 1%;
+}
+
+.button {
+  margin-right: 1rem;
+}
+h1{
+  font-family: 'Lobster', cursive;
+}
