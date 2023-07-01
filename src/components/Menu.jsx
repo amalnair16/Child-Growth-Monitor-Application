@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "../assets/css/Menu.css";
 
 const Menu = () => {
@@ -8,7 +9,7 @@ const Menu = () => {
       <label htmlFor="menu-toggler"></label>
       <ul>
         <li className="menu-item">
-          <a href="#">BMI</a>
+          <Link to="/bmi">BMI</Link>
         </li>
         <li className="menu-item">
           <a href="#">Vaccination</a>

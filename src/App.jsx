@@ -5,6 +5,7 @@ import Profiles from "./components/Profiles";
 import "./index.css";
 import Menu from "./components/Menu";
 import Edit from "./components/Edit";
+import BMI from "./components/BMI";
 
 export const mainData = createContext();
 
@@ -33,6 +34,8 @@ function App() {
       <Routes>
         <Route exact path="/" Component={Profiles} />
         <Route  path="/menu" Component={Edit} />
+        <Route  path="/bmi" Component={BMI} />
+
       </Routes>
     ) : (
       <Login />
