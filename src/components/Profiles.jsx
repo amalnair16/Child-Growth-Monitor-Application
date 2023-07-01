@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import "../assets/css/Profiles.css";
-
 
 const CardCreator = ({ onCardCreate }) => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
-  const [dob, setDob] = useState("");
+  const [dob, setDob] = useState(new Date());
   const [gender, setGender] = useState("");
   const [height, setHeight] = useState("");
   const [weight, setWeight] = useState("");
@@ -18,8 +19,8 @@ const CardCreator = ({ onCardCreate }) => {
     setDescription(e.target.value);
   };
 
-  const handleDobChange = (e) => {
-    setDob(e.target.value);
+  const handleDobChange = (date) => {
+    setDob(date);
   };
 
   const handleGenderChange = (e) => {
@@ -35,24 +36,21 @@ const CardCreator = ({ onCardCreate }) => {
   };
 
   const handleCreateCard = () => {
-    // Create a new card object with a unique ID
     const newCard = {
       id: Date.now(),
       name: name,
       description: description,
-      dob: dob,
+      dob: dob.toLocaleDateString(),
       gender: gender,
       height: height,
       weight: weight,
     };
 
-    // Pass the new card to the parent component
     onCardCreate(newCard);
 
-    // Clear input fields
     setName("");
     setDescription("");
-    setDob("");
+    setDob(new Date());
     setGender("");
     setHeight("");
     setWeight("");
@@ -72,12 +70,7 @@ const CardCreator = ({ onCardCreate }) => {
         value={description}
         onChange={handleDescriptionChange}
       />
-      <input
-        type="text"
-        placeholder="Date of Birth"
-        value={dob}
-        onChange={handleDobChange}
-      />
+      <DatePicker selected={dob} onChange={handleDobChange} />
       <select value={gender} onChange={handleGenderChange}>
         <option value="">Select Gender</option>
         <option value="male">Male</option>

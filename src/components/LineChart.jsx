@@ -128,7 +128,8 @@ const LineChart = () => {
   }, [age, weight, length]);
 
   return (
-    <div style={{ display: "flex", height: "400px" }}>
+    <div style={{padding:'5px'}}>
+    <div  style={{ display: "flex", height: "400px", border:'1px solid green' }}>
       <div style={{ width: "45%", marginRight: "5%" }}>
         <canvas ref={weightChartRef} style={{ width: "100%", height: "100%" }}></canvas>
         <div style={{ marginTop: "10px" }}>
@@ -170,7 +171,14 @@ const LineChart = () => {
             style={{ marginLeft: "47px" }}
           />
         </div>
+
       </div>
+    </div>
+    <div 
+    style={{marginTop:'10%', textAlign:'center'}}
+    >
+      <h4>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident similique sit ab distinctio quis reprehenderit id fugit, ea eum eveniet mollitia tempora impedit consequatur amet enim delectus quisquam sapiente soluta?</h4>
+    </div>
     </div>
   );
 };
