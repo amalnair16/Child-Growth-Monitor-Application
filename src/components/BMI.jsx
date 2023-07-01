@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 
+
 const BMI = () => {
   const [height, setHeight] = useState(109);
   const [weight, setWeight] = useState(18);
@@ -28,8 +29,10 @@ const BMI = () => {
     justifyContent: "center",
     alignItems: "center",
     height: "100vh",
-    background: "#f2f2f2",
+    backgroundImage: "url('https://www.cdc.gov/healthyweight/images/assessing/bmi-child-fb-600x315.jpg?_=07166')",
+    backgroundSize: "cover",
   };
+  
 
   const formStyle = {
     width: "300px",
