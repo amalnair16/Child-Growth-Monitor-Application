@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 
-
 const BMI = () => {
   const [height, setHeight] = useState(109);
   const [weight, setWeight] = useState(18);
@@ -14,13 +13,25 @@ const BMI = () => {
     const bmi = calculateBMI();
 
     if (bmi < 18.5) {
-      return "Underweight";
+      return {
+        status: "Underweight",
+        color: "red",
+      };
     } else if (bmi >= 18.5 && bmi < 25) {
-      return "Normal weight";
+      return {
+        status: "Normal weight",
+        color: "green",
+      };
     } else if (bmi >= 25 && bmi < 30) {
-      return "Overweight";
+      return {
+        status: "Overweight",
+        color: "orange",
+      };
     } else {
-      return "Obese";
+      return {
+        status: "Obese",
+        color: "red",
+      };
     }
   };
 
@@ -29,14 +40,14 @@ const BMI = () => {
     justifyContent: "center",
     alignItems: "center",
     height: "100vh",
-    backgroundImage: "url('https://www.cdc.gov/healthyweight/images/assessing/bmi-child-fb-600x315.jpg?_=07166')",
+    backgroundImage:
+      "url('https://www.cdc.gov/healthyweight/images/assessing/bmi-child-fb-600x315.jpg?_=07166')",
     backgroundSize: "cover",
   };
-  
 
   const formStyle = {
-    width: "300px",
-    padding: "20px",
+    width: "400px",
+    padding: "30px",
     background: "white",
     borderRadius: "4px",
     boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
@@ -45,7 +56,7 @@ const BMI = () => {
   const inputStyle = {
     marginBottom: "10px",
     padding: "5px",
-    fontSize: "16px",
+    fontSize: "18px",
     width: "100%",
   };
 
@@ -63,6 +74,7 @@ const BMI = () => {
   const resultStyle = {
     marginTop: "20px",
     fontSize: "18px",
+    color: getBMIStatus().color,
   };
 
   return (
@@ -95,8 +107,10 @@ const BMI = () => {
         </div>
         <div style={resultStyle}>
           <p>Your BMI: {calculateBMI()}</p>
-          <p>Status: {getBMIStatus()}</p>
+          <p>Status: {getBMIStatus().status}</p>
         </div>
+        <br />
+        <div>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quidem ipsam quibusdam magni necessitatibus eligendi atque corporis dolores voluptatibus ut nesciunt rerum reiciendis, voluptatem cum iste, officiis labore? Velit, delectus nihil?</div>
       </form>
     </div>
   );
