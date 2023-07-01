@@ -1,8 +1,27 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const BMI = () => {
-  const [height, setHeight] = useState(109);
-  const [weight, setWeight] = useState(18);
+  const [height, setHeight] = useState(0);
+  const [weight, setWeight] = useState(0);
+  const [cards, setCards] = useState([]);
+
+  useEffect(() => {
+    const jsonData = localStorage.getItem("cards");
+    if (jsonData) {
+      const parsedCards = JSON.parse(jsonData);
+      setCards(parsedCards);
+      if (parsedCards.length > 0) {
+        const latestCard = parsedCards[parsedCards.length - 1];
+        const parsedHeight = parseFloat(latestCard.height);
+        const parsedWeight = parseFloat(latestCard.weight);
+        if (!isNaN(parsedHeight) && !isNaN(parsedWeight)) {
+          setHeight(parsedHeight);
+          setWeight(parsedWeight);
+        }
+      }
+    }
+  }, []);
+  
 
   const calculateBMI = () => {
     const bmi = weight / ((height / 100) * (height / 100));
@@ -110,7 +129,16 @@ const BMI = () => {
           <p>Status: {getBMIStatus().status}</p>
         </div>
         <br />
-        <div>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quidem ipsam quibusdam magni necessitatibus eligendi atque corporis dolores voluptatibus ut nesciunt rerum reiciendis, voluptatem cum iste, officiis labore? Velit, delectus nihil?</div>
+        <div>
+          {cards.map((card, index) => (
+            <div key={index}>
+              <h3>{card.title}</h3>
+              
+            </div>
+          ))}
+         
+        </div>
+        <div>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Temporibus, similique veniam. Atque possimus inventore et asperiores exercitationem aperiam ipsam, commodi assumenda, animi vitae voluptatem, nisi libero a. Temporibus, atque vel.</div>
       </form>
     </div>
   );
