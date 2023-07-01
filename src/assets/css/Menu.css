@@ -185,7 +185,6 @@ body {
       rgba(253, 250, 240, 0.8)
     ),
     url("https://example.com/path/to/your-background-image.jpg");
-  background-blur: 10px;
   background-size: cover;
   height: 100vh;
 }
