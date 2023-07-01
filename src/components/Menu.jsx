@@ -14,23 +14,22 @@ const Menu = () => {
       <label htmlFor="menu-toggler"></label>
       <ul>
         <li className="menu-item">
-          <a id="vaccine" href="#" >
-            <img src="../images/vaccination(1).png" alt="" /></a>
+          <a href="#">BMI</a>
         </li>
         <li className="menu-item">
-          <a href="#"></a>
+          <a href="#">Vaccination</a>
         </li>
         <li className="menu-item">
-          <a href="#"></a>
+          <a href="#">Products</a>
         </li>
         <li className="menu-item">
-          <a href="#"></a>
+          <a href="#">Growth Charts</a>
         </li>
         <li className="menu-item">
-          <a href="#"></a>
+          <a href="#">Mental Health</a>
         </li>
         <li className="menu-item">
-          <a href="#"></a>
+          <a href="#">Nutrition's</a>
         </li>
       </ul>
     </nav>
