@@ -71,20 +71,22 @@ const CardCreator = ({ onCardCreate }) => {
         onChange={handleDescriptionChange}
       />
       <DatePicker selected={dob} onChange={handleDobChange} />
+      
       <select value={gender} onChange={handleGenderChange}>
         <option value="">Select Gender</option>
         <option value="male">Male</option>
         <option value="female">Female</option>
       </select>
+      <div><br /></div>
       <input
         type="text"
-        placeholder="Height"
+        placeholder="Height in CM"
         value={height}
         onChange={handleHeightChange}
       />
       <input
         type="text"
-        placeholder="Weight"
+        placeholder="Weight in KG"
         value={weight}
         onChange={handleWeightChange}
       />
@@ -119,7 +121,10 @@ const Card = ({
       <p>Weight: {weight}</p>
       <br />
       <button onClick={handleEditClick}>[ Edit ]</button>
-      <a href="/menu"> <button>  [ Select ]</button></a>
+      <a href="/menu">
+        {" "}
+        <button> [ Select ]</button>
+      </a>
     </div>
   );
 };
@@ -129,7 +134,6 @@ const Profiles = () => {
   const [editingCardId, setEditingCardId] = useState(null);
 
   useEffect(() => {
-    // Retrieve cards from localStorage when the component mounts
     const jsonData = localStorage.getItem("cards");
     if (jsonData) {
       const savedCards = JSON.parse(jsonData);
@@ -138,7 +142,6 @@ const Profiles = () => {
   }, []);
 
   const handleCardCreate = (newCard) => {
-    // Retrieve the existing dummy card from localStorage
     const dummyCardJson = localStorage.getItem("dummyCard");
     let dummyCard = {};
 
@@ -146,17 +149,14 @@ const Profiles = () => {
       dummyCard = JSON.parse(dummyCardJson);
     }
 
-    // Add the new card to the dummy card
     dummyCard = {
       ...dummyCard,
       [newCard.id]: newCard,
     };
 
-    // Save the updated dummy card to localStorage as JSON
     const dummyCardJsonUpdated = JSON.stringify(dummyCard);
     localStorage.setItem("dummyCard", dummyCardJsonUpdated);
 
-    // Retrieve the cards from localStorage
     const jsonData = localStorage.getItem("cards");
     let savedCards = [];
 
@@ -164,14 +164,11 @@ const Profiles = () => {
       savedCards = JSON.parse(jsonData);
     }
 
-    // Add the new card to the array of cards
     const updatedCards = [...savedCards, newCard];
 
-    // Save the updated cards array to localStorage as JSON
     const updatedCardsJson = JSON.stringify(updatedCards);
     localStorage.setItem("cards", updatedCardsJson);
 
-    // Set the updated cards array
     setCards(updatedCards);
   };
 
