@@ -2,82 +2,169 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  
 }
 
 .card-creator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin-bottom: 20px;
-  width: 200px;
-  padding: 12px 20px;
-  margin: 8px 0;
-  box-sizing: border-box;
-
-}
-
-.card-creator input {
-  margin-bottom: 10px;
 }
 
 .card {
   background-color: #f2f2f2;
   border: 1px solid #ccc;
-  padding: 20px;
   border-radius: 4px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 10px;
   margin-bottom: 10px;
 }
 
 .card h3 {
-  color: #333;
-  font-size: 24px;
-  margin-bottom: 10px;
-  font-family: 'Poppins', sans-serif;
+  font-size: 18px;
+  margin-bottom: 5px;
 }
 
 .card p {
-  color: #666;
-  font-size: 16px;
-  line-height: 1.5;
+  margin: 5px 0;
 }
 
-.card-creator button {
-  display: inline-block;
-  padding: 10px 20px;
-  background-color: #333;
-  color: #fff;
-  text-decoration: none;
+.edit-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+
+
+input[type="text"],
+select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
   border-radius: 4px;
-  transition: background-color 0.3s ease;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+}
+
+input[type="text"]::placeholder {
+  color: #aaa;
+}
+
+input[type="text"]:focus,
+select:focus {
+  outline: none;
+  border-color: #4caf50;
+}
+
+.datepicker {
+  width: 100%;
+}
+
+.datepicker input[type="text"] {
   cursor: pointer;
+}
+
+.datepicker button {
+  background-color: #4caf50;
+  color: white;
   border: none;
+  padding: 8px 12px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  cursor: pointer;
 }
 
-.card-creator button:hover {
-  background-color: #555;
+.datepicker button:hover {
+  background-color: #45a049;
 }
-.profiles {
+
+.datepicker__input-container {
+  position: relative;
+}
+
+.datepicker__input-container input[type="text"] {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 8px;
+  width: 100%;
+  cursor: pointer;
+}
+
+.datepicker__input-container input[type="text"]:focus {
+  outline: none;
+  border-color: #4caf50;
+}
+
+.datepicker__input-container .react-datepicker-wrapper {
+  display: block;
+}
+
+.datepicker__input-container .react-datepicker-wrapper input[type="text"] {
+  width: 100%;
+  cursor: pointer;
+}
+
+.datepicker__input-container .react-datepicker__close-icon::after {
+  font-size: 16px;
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+  color: #aaa;
+  content: "×";
+  cursor: pointer;
+}
+
+.datepicker__input-container .react-datepicker__close-icon:hover::after {
+  color: #777;
+}
+
+.datepicker__input-container .react-datepicker__clear-btn {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+  padding: 0;
+  border: none;
+  background: none;
+  font-size: 12px;
+  color: #aaa;
+  cursor: pointer;
+}
+
+.datepicker__input-container .react-datepicker__clear-btn:hover {
+  color: #777;
+}
+
+a {
+  text-decoration: none;
+}
+.profiles{
   background: linear-gradient(
-      135deg,
-      rgba(255, 194, 217, 0.8),
-      rgba(253, 250, 240, 0.8)
-    ),
-    url("https://example.com/path/to/your-background-image.jpg");
-  background-blur: 10px;
-  background-size: cover;
-  height: 100vh;
-
+    135deg,
+    rgba(255, 194, 217, 0.8),
+    rgba(253, 250, 240, 0.8)
+  ),
+  url("https://example.com/path/to/your-background-image.jpg");
+background-size: cover;
+height: 100vh;
 }
+
+
 /* CSS */
 .button-33 {
   background-color: #c2fbd7;
   border-radius: 100px;
-  box-shadow: rgba(44, 187, 99, 0.2) 0 -25px 18px -14px inset,
-    rgba(44, 187, 99, 0.15) 0 1px 2px, rgba(44, 187, 99, 0.15) 0 2px 4px,
-    rgba(44, 187, 99, 0.15) 0 4px 8px, rgba(44, 187, 99, 0.15) 0 8px 16px,
-    rgba(44, 187, 99, 0.15) 0 16px 32px;
+  box-shadow: rgba(44, 187, 99, .2) 0 -25px 18px -14px inset,rgba(44, 187, 99, .15) 0 1px 2px,rgba(44, 187, 99, .15) 0 2px 4px,rgba(44, 187, 99, .15) 0 4px 8px,rgba(44, 187, 99, .15) 0 8px 16px,rgba(44, 187, 99, .15) 0 16px 32px;
   color: green;
   cursor: pointer;
   display: inline-block;
-  font-family: CerebriSans-Regular, -apple-system, system-ui, Roboto, sans-serif;
+  font-family: CerebriSans-Regular,-apple-system,system-ui,Roboto,sans-serif;
   padding: 7px 20px;
   text-align: center;
   text-decoration: none;
@@ -90,13 +177,6 @@
 }
 
 .button-33:hover {
-  box-shadow: rgba(44, 187, 99, 0.35) 0 -25px 18px -14px inset,
-    rgba(44, 187, 99, 0.25) 0 1px 2px, rgba(44, 187, 99, 0.25) 0 2px 4px,
-    rgba(44, 187, 99, 0.25) 0 4px 8px, rgba(44, 187, 99, 0.25) 0 8px 16px,
-    rgba(44, 187, 99, 0.25) 0 16px 32px;
+  box-shadow: rgba(44,187,99,.35) 0 -25px 18px -14px inset,rgba(44,187,99,.25) 0 1px 2px,rgba(44,187,99,.25) 0 2px 4px,rgba(44,187,99,.25) 0 4px 8px,rgba(44,187,99,.25) 0 8px 16px,rgba(44,187,99,.25) 0 16px 32px;
   transform: scale(1.05) rotate(-1deg);
-}
-.profiles h2{
-  font-size: 40px;
-  font-family: 'Lobster', cursive;
 }
