@@ -91,6 +91,7 @@ body {
   left: 0;
   right: 0;
   margin: auto;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Added box shadow */
 }
 
 .menu-toggler + label:before,
@@ -152,6 +153,7 @@ body {
   height: 80px;
   opacity: 0;
   transition: 0.5s;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Added box shadow */
 }
 
 .menu-item a {
