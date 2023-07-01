@@ -1,12 +1,26 @@
 import React, { useState } from "react";
 
 const BMI = () => {
-  const [height, setHeight] = useState(0.6);
-  const [weight, setWeight] = useState(20);
+  const [height, setHeight] = useState(109);
+  const [weight, setWeight] = useState(18);
 
   const calculateBMI = () => {
     const bmi = weight / ((height / 100) * (height / 100));
     return bmi.toFixed(2);
+  };
+
+  const getBMIStatus = () => {
+    const bmi = calculateBMI();
+
+    if (bmi < 18.5) {
+      return "Underweight";
+    } else if (bmi >= 18.5 && bmi < 25) {
+      return "Normal weight";
+    } else if (bmi >= 25 && bmi < 30) {
+      return "Overweight";
+    } else {
+      return "Obese";
+    }
   };
 
   return (
@@ -34,6 +48,7 @@ const BMI = () => {
       </div>
       <div>
         <p>Your BMI: {calculateBMI()}</p>
+        <p>Status: {getBMIStatus()}</p>
       </div>
     </>
   );
