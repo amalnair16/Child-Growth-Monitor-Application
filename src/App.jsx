@@ -3,9 +3,9 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "./components/Login";
 import Profiles from "./components/Profiles";
 import "./index.css";
-import Menu from "./components/Menu";
 import Edit from "./components/Edit";
 import BMI from "./components/BMI";
+import LineChart from "./components/LineChart";
 
 export const mainData = createContext();
 
@@ -26,21 +26,21 @@ function useLocalStorageState(key, defaultValue) {
 }
 
 function App() {
-  const [auth, setAuth] = useLocalStorageState('auth', false);
+  const [auth, setAuth] = useLocalStorageState("auth", false);
 
   return (
     <mainData.Provider value={{ auth, setAuth }}>
-    {auth ? (
-      <Routes>
-        <Route exact path="/" Component={Profiles} />
-        <Route  path="/menu" Component={Edit} />
-        <Route  path="/bmi" Component={BMI} />
-
-      </Routes>
-    ) : (
-      <Login />
-    )}
-  </mainData.Provider>
+      {auth ? (
+        <Routes>
+          <Route exact path="/" Component={Profiles} />
+          <Route path="/menu" Component={Edit} />
+          <Route path="/bmi" Component={BMI} />
+          <Route path="/chart" Component={LineChart} />
+        </Routes>
+      ) : (
+        <Login />
+      )}
+    </mainData.Provider>
   );
 }
 

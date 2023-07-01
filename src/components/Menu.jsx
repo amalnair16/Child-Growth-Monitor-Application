@@ -18,7 +18,7 @@ const Menu = () => {
           <a href="#">Products</a>
         </li>
         <li className="menu-item">
-          <a href="#">Growth Charts</a>
+        <Link to="/chart">Growth Chart</Link>
         </li>
         <li className="menu-item">
           <a href="#">Mental Health</a>
