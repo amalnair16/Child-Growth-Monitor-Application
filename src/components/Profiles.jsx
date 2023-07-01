@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { Link, useNavigate } from "react-router-dom";
+import "../assets/css/Profiles.css";
 
 const useLocalStorage = (key, initialValue) => {
   const [value, setValue] = useState(() => {
@@ -89,7 +91,9 @@ const CardCreator = ({ onCardCreate }) => {
         <option value="male">Male</option>
         <option value="female">Female</option>
       </select>
-      <div><br /></div>
+      <div>
+        <br />
+      </div>
       <input
         type="text"
         placeholder="Height in CM"
@@ -126,6 +130,7 @@ const Card = ({
   const [cardGender, setCardGender] = useState(gender);
   const [cardHeight, setCardHeight] = useState(height);
   const [cardWeight, setCardWeight] = useState(weight);
+  const history = useNavigate();
 
   const handleEditClick = () => {
     setEditing(true);
@@ -140,9 +145,14 @@ const Card = ({
       height: cardHeight,
       weight: cardWeight,
     };
-
     onEditCard(id, updatedCard);
     setEditing(false);
+  };
+
+  const handleLinkClick = () => {
+    setTimeout(() => {
+      history("/menu");
+    }, 2);
   };
 
   return (
@@ -196,10 +206,14 @@ const Card = ({
           <p>Weight: {weight}</p>
           <br />
           <button onClick={handleEditClick}>[ Edit ]</button>
-          <a href="/menu">
-            {" "}
-            <button> [ Select ]</button>
-          </a>
+          <button
+            onClick={() => {
+              onEditCard(id);
+              handleLinkClick();
+            }}
+          >
+            [ Select ]
+          </button>
         </>
       )}
     </div>
@@ -208,7 +222,7 @@ const Card = ({
 
 const Profiles = () => {
   const [cards, setCards] = useLocalStorage("cards", []);
-  
+
   const handleCardCreate = (newCard) => {
     const updatedCards = [...cards, newCard];
     setCards(updatedCards);
@@ -224,6 +238,16 @@ const Profiles = () => {
       }
       return card;
     });
+
+    // Find the index of the selected card
+    const selectedIndex = updatedCards.findIndex((card) => card.id === cardId);
+
+    // Move the selected card to the last index
+    if (selectedIndex !== -1) {
+      const selectedCard = updatedCards.splice(selectedIndex, 1)[0];
+      updatedCards.push(selectedCard);
+    }
+
     setCards(updatedCards);
   };
 
@@ -245,50 +269,6 @@ const Profiles = () => {
           onEditCard={handleEditCard}
         />
       ))}
-    </div>
-  );
-};
-
-const EditCard = ({ card, onSaveCard }) => {
-  const [name, setName] = useState(card.name);
-  const [description, setDescription] = useState(card.description);
-  const [dob, setDob] = useState(card.dob);
-  const [gender, setGender] = useState(card.gender);
-  const [height, setHeight] = useState(card.height);
-  const [weight, setWeight] = useState(card.weight);
-
-  const handleSaveClick = () => {
-    const updatedCard = {
-      name: name,
-      description: description,
-      dob: dob,
-      gender: gender,
-      height: height,
-      weight: weight,
-    };
-
-    onSaveCard(updatedCard);
-  };
-
-  return (
-    <div className="edit-card">
-      <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
-      <input
-        type="text"
-        value={description}
-        onChange={(e) => setDescription(e.target.value)}
-      />
-      <input type="text" value={dob} onChange={(e) => setDob(e.target.value)} />
-      <select value={gender} onChange={(e) => setGender(e.target.value)}>
-        <option value="">Select Gender</option>
-        <option value="male">Male</option>
-        <option value="female">Female</option>
-      </select>
-      <input type="text" value={height} onChange={(e) => setHeight(e.target.value)} />
-      <input type="text" value={weight} onChange={(e) => setWeight(e.target.value)} />
-      <button onClick={handleSaveClick} className="button button-33">
-        Save
-      </button>
     </div>
   );
 };
